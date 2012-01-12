@@ -1,4 +1,3 @@
-
 # Intro
 
 Sunlight Labs provides several APIs for accessing political data within the US.  This project is a Node.js wrapper for those APIs.  The APIs are:
@@ -26,6 +25,8 @@ You have to do a global install to enable the command-line.  `[sudo] npm install
 
 Type `sunlight-labs server` to start a local server, and then browse to `http://localhost:3000/sunlightlabs/testapp/`.
 
+If you're lucky, my own test server may be up at http://services.perfectapi.com:3001/sunlightlabs/testapp/
+
 ## From Command-line
 
 You have to do a global install to enable the command-line.  `[sudo] npm install -g sunlight-labs`.
@@ -34,7 +35,7 @@ Type `sunlight-labs --help` for a list of commands.  For a given command `x`, ty
 
 ## From Node.js
 
-Like any other API.  Run the test server or the command-line to get help on the available commands and their parameters.
+Like any other API.  See http://services.perfectapi.com:3001/sunlightlabs/testapp/ or run the test server or the command-line to get help on the available commands and their parameters.
 
 ```
 var sunlight = require('sunlight-labs');
