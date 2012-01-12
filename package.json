@@ -5,8 +5,8 @@
     ,"keywords": "API, sunlight, labs, congress, campaign, contributions, transparency, government"
     ,"homepage": "http://www.perfectapi.com/"
     ,"bugs": {"url": "https://github.com/perfectapi/sunlight-labs-node/issues", "email": "sunlight-labs-node@perfectapi.com" }
-    ,"main": "bin\api.js"
-	,"bin": "bin\api.js"
+    ,"main": "bin/api.js"
+	,"bin": "bin/api.js"
 ,   "engines": {
         "node" : ">=0.6.5"
     }
