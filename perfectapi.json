@@ -419,7 +419,8 @@
 				[{"name":"response", "description":"search response"}
 				]
 		}
-		], 
+		
+	], 
 	"path": "sunlightlabs",
 	"environment": [
 		{"parameter": "SUNLIGHT_API_KEY", "long":"apikey", "short":"k", "required":"true"}
