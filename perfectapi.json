@@ -95,6 +95,180 @@
 			"returns": 
 				[{"name":"response", "description":"search response"}
 				]
+		},
+		{
+			"name": "getLegislatorsForZip",
+			"synopsis": "returns all legislators that currently represent some portion of a zipcode",
+			"description": "legislators.allForZip is a shortcut method that returns all legislators that currently represent some portion of a zipcode. Typically this means it will return two senators and one or more representatives. This is the same data that could be retrieved by using districts.getDistrictsFromZip in combination with legislators.get and getList.",
+			"verb": "GET",
+			"parameter": {"name":"zip", "required":"true", "description":"five digit zip code"}, 
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{
+			"name": "getLegislatorsForLatLong",
+			"synopsis": "returns all legislators that currently represent an area (district or state) that contains a given point",
+			"description": "legislators.allForLatLong is a shortcut method that returns all legislators that currently represent an area (district or state) that contains a given point. Typically this means it will return two senators and one representative. This is the same data that could be retrieved by using districts.getDistrictsFromLatLong in combination with legislators.get and getList.",
+			"verb": "GET",
+			"options": 
+				[{"option": "latitude", "long":"latitude", "short":"a", "description":" latitude of coordinate"},
+				 {"option": "longitude", "long":"longitude", "short":"o", "description":" longitude of coordinate"}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{
+			"name": "getDistrictsFromZip",
+			"synopsis": "districts.getDistrictsFromZip gets all districts that overlap the area for a given zip code.",
+			"description": "districts.getDistrictsFromZip gets all districts that overlap the area for a given zip code.",
+			"verb": "GET",
+			"parameter": {"name":"zip", "required":"true", "description":"five digit zip code"}, 
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{
+			"name": "getDistrictFromLatLong",
+			"synopsis": "districts.getDistrictFromLatLong gets the district that a provided latitude/longitude pair falls within.",
+			"description": "districts.getDistrictFromLatLong gets the district that a provided latitude/longitude pair falls within.",
+			"verb": "GET",
+			"options": 
+				[{"option": "latitude", "long":"latitude", "short":"a", "description":" latitude of coordinate"},
+				 {"option": "longitude", "long":"longitude", "short":"o", "description":" longitude of coordinate"}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{
+			"name": "getCommittees",
+			"synopsis": "gets a list of all committees for a given chamber along with their subcommittees",
+			"description": "committees.getList gets a list of all committees for a given chamber along with their subcommittees",
+			"verb": "GET",
+			"parameter": {"name":"chamber", "required":"true", "description":"House, Senate, or Joint"}, 
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{
+			"name": "getCommittee",
+			"synopsis": "gets details (subcommittees + membership) for a committee by id",
+			"description": "committees.get gets details (subcommittees + membership) for a committee by id",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"committee id (eg. JSPR)"}, 
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{
+			"name": "getAllCommitteesForLegislator",
+			"synopsis": "gets a list of all committees that a member serves on, including subcommittes",
+			"description": "committees.allForLegislator gets a list of all committees that a member serves on, including subcommittes",
+			"verb": "GET",
+			"parameter": {"name":"bioguide_id", "required":"true", "description":"legislator's bioguide_id"}, 
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{
+			"name": "getCampaignContributions",
+			"synopsis": "returns data on campaign contributions",
+			"description": "returns data on campaign contributions",
+			"verb": "GET",
+			"options": 
+				[{"option": "amount", "long":"amount", "description":"The amount of the contribution in US dollars, exact: 500, greater than or equal: >|500, less than or equal: <|500"},
+				 {"option": "contributor_ft", "long":"contributor_ft", "description":"Full-text search on name of individual, PAC, organization, or employer"},
+				 {"option": "contributor_state", "long":"contributor_state", "description":"Two-letter abbreviation of state from which the contribution was made"},
+				 {"option": "cycle", "long":"cycle", "description":"A YYYY formatted year, 1990 - 2010.  2006|2008 is format for \"OR\""},
+				 {"option": "date", "long":"date", "description":"date of the contribution in ISO date format."},
+				 {"option": "for_against", "long":"for_against", "description":"Either 'for' or 'against' the candidate"},
+				 {"option": "organization_ft", "long":"organization_ft", "description":"full-text search on employer, organization, and parent organization"},
+				 {"option": "recipient_ft", "long":"recipient_ft", "description":"full-text search on name of PAC or candidate receiving the contribution"},
+				 {"option": "recipient_state", "long":"recipient_state", "description":"two-letter abbreviation of state in which the candidate receiving the contribution is running"},
+				 {"option": "seat", "long":"seat", "description":"type of office being sought, e.g. federal:house"},
+				 {"option": "transaction_namespace", "long":"transaction_namespace", "description":"Filter on either urn:fec:transaction for federal, or urn:nimsp:transaction for state cotributions"},
+				 {"option": "page", "long":"page", "default":"1", "description":"The page of results to return; defaults to 1"},
+				 {"option": "per_page", "long":"per_page", "default":"1000", "description":"The number of results to return per page, max 100,000"}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{
+			"name": "getFederalLobbying",
+			"synopsis": "returns data on federal lobbying spending",
+			"description": "returns data on federal lobbying spending",
+			"verb": "GET",
+			"options": 
+				[{"option": "amount", "long":"amount", "description":"The amount of the contribution in US dollars, exact: 500, greater than or equal: >|500, less than or equal: <|500"},
+				 {"option": "client_ft", "long":"client_ft", "description":"Full-text search on the name of the client for which the lobbyist is working"},
+				 {"option": "client_parent_ft", "long":"client_parent_ft", "description":"Full-text search on the name of the parent organization of the client."},
+				 {"option": "filing_type", "long":"filing_type", "description":"Type of filing as identified by CRP, single char"},
+				 {"option": "lobbyist_ft", "long":"lobbyist_ft", "description":"Full-text search on the name of the lobbyist involved in the lobbying activity.."},
+				 {"option": "registrant_ft", "long":"registrant_ft", "description":"Full-text search on the name of the person or organization filing the lobbyist registration. "},
+				 {"option": "transaction_id", "long":"transaction_id", "description":"Report ID given by the Senate Office of Public Records"},
+				 {"option": "transaction_type", "long":"transaction_type", "description":"The type of filing as reported by the Senate Office of Public Records."},
+				 {"option": "year", "long":"year", "description":"the year in which the registration was filed. a yyyy formatted year, 1998 - 2010."},
+				 {"option": "page", "long":"page", "default":"1", "description":"The page of results to return; defaults to 1"},
+				 {"option": "per_page", "long":"per_page", "default":"1000", "description":"The number of results to return per page, max 100,000"}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{
+			"name": "getFederalGrants",
+			"synopsis": "returns data on federal grant spending",
+			"description": "returns data on federal grant spending",
+			"verb": "GET",
+			"options": 
+				[{"option": "agency_ft", "long":"agency_ft", "description":"Full-text search on the reported name of the federal agency awarding the grant."},
+				 {"option": "amount_total", "long":"amount_total", "description":"Total amount of the grant in US dollars, exact: 500, greater than or equal: >|500, less than or equal: <|500"},
+				 {"option": "assistance_type", "long":"assistance_type", "description":"A general code for the type of grant awarded, 2 digit code."},
+				 {"option": "fiscal_year", "long":"fiscal_year", "description":"The year in which the grant was awarded. A YYYY formatted year, 2000 - 2010."},
+				 {"option": "recipient_ft", "long":"recipient_ft", "description":"Full-text search on the reported name of the grant recipient."},
+				 {"option": "recipient_state", "long":"recipient_state", "description":"Two-letter abbreviation of the state in which the grant was awarded."},
+				 {"option": "recipient_type", "long":"recipient_type", "description":"The type of entity that received the grant. 2 digit code"},
+				 {"option": "page", "long":"page", "default":"1", "description":"The page of results to return; defaults to 1"},
+				 {"option": "per_page", "long":"per_page", "default":"1000", "description":"The number of results to return per page, max 100,000"}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 
+		{
+			"name": "getFederalContracts",
+			"synopsis": "returns data on federal contract spending",
+			"description": "returns data on federal contract spending",
+			"verb": "GET",
+			"options": 
+				[{"option": "agency_id", "long":"agency_id", "description":"The FIPS code for the agency."},
+				 {"option": "agency_name", "long":"agency_name", "description":"Full-text search on the name of the agency"},
+				 {"option": "contracting_agency_id", "long":"contracting_agency_id", "description":"The FIPS code for the contracting agency."},
+				 {"option": "contracting_agency_name", "long":"contracting_agency_name", "description":"Full-text search on the name of the contracting agency."},
+				 {"option": "current_amount", "long":"current_amount", "description":"Current value of the contract in US dollars, exact: 500, greater than or equal: >|500, less than or equal: <|500"},
+				 {"option": "fiscal_year", "long":"fiscal_year", "description":"The year in which the grant was awarded. A YYYY formatted year, 2006 - 2010."},
+				 {"option": "maximum_amount", "long":"maximum_amount", "description":"Maximum possible value of the contract in US dollars, exact: 500, greater than or equal: >|500, less than or equal: <|500"},
+				 {"option": "place_district", "long":"place_district", "description":"The congressional district in which the contract action will be performed.."},
+				 {"option": "place_state_code", "long":"place_state_code", "description":"FIPS code for state in which the contract action will be performed."},
+				 {"option": "requesting_agency_id", "long":"requesting_agency_id", "description":"The FIPS code for the requesting agency."},
+				 {"option": "requesting_agency_name", "long":"requesting_agency_name", "description":"Full-text search on the name of the contracting agency."},
+				 {"option": "obligated_amount", "long":"obligated_amount", "description":"The amount obligated or de-obligated by the transaction in US dollars, exact: 500, greater than or equal: >|500, less than or equal: <|500"},
+				 {"option": "vendor_city", "long":"vendor_city", "description":"Full-text search on the name of the primary city in which the contractor does business."},
+				 {"option": "vendor_district", "long":"vendor_district", "description":"The primary congressional district in which the contractor does business."},
+				 {"option": "vendor_duns", "long":"vendor_duns", "description":"The Dun and Bradstreet number assigned to the contractor."},
+				 {"option": "vendor_name", "long":"vendor_name", "description":"Full-text search on the name of the contractor."},
+				 {"option": "vendor_parent_duns", "long":"vendor_parent_duns", "description":"The Dun and Bradstreet number assigned to the corporate parent of the contractor."},
+				 {"option": "vendor_state", "long":"vendor_state", "description":"The primary state in which the contractor does business."},
+				 {"option": "vendor_zipcode", "long":"vendor_zipcode", "description":"The primary zipcode in which the contractor does business."},
+				 {"option": "page", "long":"page", "default":"1", "description":"The page of results to return; defaults to 1"},
+				 {"option": "per_page", "long":"per_page", "default":"1000", "description":"The number of results to return per page, max 100,000"}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
 		}
 	], 
 	"path": "sunlightlabs",
