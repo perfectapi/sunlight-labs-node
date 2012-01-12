@@ -1,0 +1,23 @@
+{   "name":             "sunlight-labs"
+,   "version":          "0.0.1"
+    ,"description": "Provides a Node API wrapper to the sunlight labs apis"
+,   "author":  {"name": "Steve Campbell", "email": "steve@perfectapi.com" }
+    ,"keywords": "API, sunlight, labs, congress, campaign, contributions"
+    ,"homepage": "http://www.perfectapi.com/"
+    ,"bugs": {"url": "https://github.com/perfectapi/xxx/issues", "email": "xxx@perfectapi.com" }
+    ,"main": "api.js"
+	,"bin": "api.js"
+,   "engines": {
+        "node" : ">=0.6.5"
+    }
+,   "dependencies":    {   
+		"perfectapi":  ">=0.0.8",
+		"request": ">=2.9.3",
+		"querystring": ">=0.1.0"
+    }
+,   "repository" :
+    {
+        "type" : "git",
+        "url" : "git://github.com/perfectapi/xxx.git"
+    }
+}

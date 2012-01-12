@@ -1,0 +1,104 @@
+{	"exports": "sunlightlabs",
+	"signature": [
+		{ 
+			"name": "getLegislator",
+			"synopsis": "get all information on a single legislator",
+			"description": "Currently the Sunlight Labs API provides two methods for obtaining information about legislators: legislators.get and legislators.getList. Both of these methods operate in essentially the same way, the main difference being that legislator.get returns a single legislator (or an error if the query would have resulted in multiple legislators) and legislator.getList returns a list of legislators (a list of size one is allowed). In other words, legislator.get is purely a convenience method to avoid dealing with a list of values when only one value is needed.",
+			"verb": "GET",
+			"options": 
+				[{"option": "title", "long":"title", "short":"t", "description":"Title held by this legislator, either Sen or Rep"},
+				 {"option": "firstname", "long":"firstname", "short":"f", "description":"Legislator's first name"},
+				 {"option": "middlename", "long":"middlename", "short":"m", "description":"Legislator's middle name or initial"},
+				 {"option": "lastname", "long":"lastname", "short":"l", "description":"Legislator's last name"},
+				 {"option": "name_suffix", "long":"name_suffix", "short":"u", "description":"Legislator's suffix (Jr., III, etc.)"},
+				 {"option": "nickname", "long":"nickname", "short":"n", "description":"Preferred nickname of legislator (if any)"},
+				 {"option": "party", "long":"party", "short":"p", "description":"Legislator's political party (D, I, or R)"},
+				 {"option": "state", "long":"state", "short":"s", "description":"2 letter abbreviation of legislator's state"},
+				 {"option": "district", "long":"district", "short":"d", "description":"If legislator is a representative, their district. 0 is used for At-Large districts"},
+				 {"option": "in_office", "long":"in_office", "short":"i", "description":"1 if legislator is currently serving, 0 if legislator is no longer in office due to defeat/resignation/death/etc."},
+				 {"option": "gender", "long":"gender", "short":"g", "description":"M or F"},
+				 {"option": "phone", "long":"phone", "short":"h", "description":"Congressional office phone number"},
+				 {"option": "fax", "long":"fax", "short":"x", "description":"Congressional office fax number"},
+				 {"option": "website", "long":"website", "short":"w", "description":"URL of Congressional website"},
+				 {"option": "webform", "long":"webform", "short":"w", "description":"URL of web contact form"},
+				 {"option": "email", "long":"email", "short":"w", "description":"Legislator's email address (if known)"},
+				 {"option": "congress_office", "long":"congress_office", "short":"w", "description":"Legislator's Washington DC Office Address"},
+				 {"option": "bioguide_id", "long":"bioguide_id", "short":"w", "description":"Legislator ID assigned by [http://bioguide.congress.gov/biosearch/biosearch.asp Congressional Biographical Directory] (also used by Washington Post/NY Times)"},
+				 {"option": "votesmart_id", "long":"votesmart_id", "short":"w", "description":"Legislator ID assigned by [http://votesmart.org Project Vote Smart]"},
+				 {"option": "fec_id", "long":"fec_id", "short":"w", "description":"[http://fec.gov Federal Election Commission] ID"},
+				 {"option": "govtrack_id", "long":"govtrack_id", "short":"w", "description":"ID assigned by [http://govtrack.us Govtrack.us]"},
+				 {"option": "crp_id", "long":"crp_id", "short":"w", "description":"ID provided by [http://opensecrets.org Center for Responsive Politics]"},
+				 {"option": "congresspedia_url", "long":"congresspedia_url", "short":"w", "description":"URL of Legislator's entry on [http://congresspedia.org Congresspedia]"},
+				 {"option": "twitter_id", "long":"twitter_id", "short":"w", "description":"Congressperson's official [http://twitter.com Twitter] account"},
+				 {"option": "youtube_url", "long":"youtube_url", "short":"w", "description":"Congressperson's official [http://youtube.com Youtube] account"},
+				 {"option": "facebook_id", "long":"facebook_id", "short":"w", "description":"Facebook ID"},
+				 {"option": "senate_class", "long":"senate_class", "short":"w", "description":"for senators I, II, or III depending on the Senator's election term"},
+				 {"option": "birthdate", "long":"birthdate", "short":"w", "description":"YYYY-MM-DD formatted birth date"},
+				 
+				 {"flag": "all_legislators", "default":"false", "long":"all_legislators", "short":"a", "description":"When all_legislators is specified legislators with in_office=0 are included as well."}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{ 
+			"name": "getLegislators",
+			"synopsis": "get information on all legislators meeting certain requirements",
+			"description": "Currently the Sunlight Labs API provides two methods for obtaining information about legislators: legislators.get and legislators.getList. Both of these methods operate in essentially the same way, the main difference being that legislator.get returns a single legislator (or an error if the query would have resulted in multiple legislators) and legislator.getList returns a list of legislators (a list of size one is allowed). In other words, legislator.get is purely a convenience method to avoid dealing with a list of values when only one value is needed.",
+			"verb": "GET",
+			"options": 
+				[{"option": "title", "long":"title", "short":"t", "description":"Title held by this legislator, either Sen or Rep"},
+				 {"option": "firstname", "long":"firstname", "short":"f", "description":"Legislator's first name"},
+				 {"option": "middlename", "long":"middlename", "short":"m", "description":"Legislator's middle name or initial"},
+				 {"option": "lastname", "long":"lastname", "short":"l", "description":"Legislator's last name"},
+				 {"option": "name_suffix", "long":"name_suffix", "short":"u", "description":"Legislator's suffix (Jr., III, etc.)"},
+				 {"option": "nickname", "long":"nickname", "short":"n", "description":"Preferred nickname of legislator (if any)"},
+				 {"option": "party", "long":"party", "short":"p", "description":"Legislator's political party (D, I, or R)"},
+				 {"option": "state", "long":"state", "short":"s", "description":"2 letter abbreviation of legislator's state"},
+				 {"option": "district", "long":"district", "short":"d", "description":"If legislator is a representative, their district. 0 is used for At-Large districts"},
+				 {"option": "in_office", "long":"in_office", "short":"i", "description":"1 if legislator is currently serving, 0 if legislator is no longer in office due to defeat/resignation/death/etc."},
+				 {"option": "gender", "long":"gender", "short":"g", "description":"M or F"},
+				 {"option": "phone", "long":"phone", "short":"h", "description":"Congressional office phone number"},
+				 {"option": "fax", "long":"fax", "short":"x", "description":"Congressional office fax number"},
+				 {"option": "website", "long":"website", "short":"w", "description":"URL of Congressional website"},
+				 {"option": "webform", "long":"webform", "short":"w", "description":"URL of web contact form"},
+				 {"option": "email", "long":"email", "short":"w", "description":"Legislator's email address (if known)"},
+				 {"option": "congress_office", "long":"congress_office", "short":"w", "description":"Legislator's Washington DC Office Address"},
+				 {"option": "bioguide_id", "long":"bioguide_id", "short":"w", "description":"Legislator ID assigned by [http://bioguide.congress.gov/biosearch/biosearch.asp Congressional Biographical Directory] (also used by Washington Post/NY Times)"},
+				 {"option": "votesmart_id", "long":"votesmart_id", "short":"w", "description":"Legislator ID assigned by [http://votesmart.org Project Vote Smart]"},
+				 {"option": "fec_id", "long":"fec_id", "short":"w", "description":"[http://fec.gov Federal Election Commission] ID"},
+				 {"option": "govtrack_id", "long":"govtrack_id", "short":"w", "description":"ID assigned by [http://govtrack.us Govtrack.us]"},
+				 {"option": "crp_id", "long":"crp_id", "short":"w", "description":"ID provided by [http://opensecrets.org Center for Responsive Politics]"},
+				 {"option": "congresspedia_url", "long":"congresspedia_url", "short":"w", "description":"URL of Legislator's entry on [http://congresspedia.org Congresspedia]"},
+				 {"option": "twitter_id", "long":"twitter_id", "short":"w", "description":"Congressperson's official [http://twitter.com Twitter] account"},
+				 {"option": "youtube_url", "long":"youtube_url", "short":"w", "description":"Congressperson's official [http://youtube.com Youtube] account"},
+				 {"option": "facebook_id", "long":"facebook_id", "short":"w", "description":"Facebook ID"},
+				 {"option": "senate_class", "long":"senate_class", "short":"w", "description":"for senators I, II, or III depending on the Senator's election term"},
+				 {"option": "birthdate", "long":"birthdate", "short":"w", "description":"YYYY-MM-DD formatted birth date"},
+				 
+				 {"flag": "all_legislators", "default":"false", "long":"all_legislators", "short":"a", "description":"When all_legislators is specified legislators with in_office=0 are included as well."}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		},
+		{
+			"name": "searchLegislators",
+			"synopsis": "legislators.search does a fuzzy-matching text search of the legislators",
+			"description": "legislators.search does a fuzzy-matching text search of the legislators. The results are legislator names associated with scores ranging from 0 to 1 with 1.0 being an assumed \"perfect match.\" The search algorithm can handle a wide variety of inputs including different orders for the names (last, first or first last), nicknames, minor typos, and more.",
+			"verb": "GET",
+			"parameter": {"name":"name", "required":"true", "description":"name to search for"}, 
+			"options": 
+				[{"option": "threshold", "long":"threshold", "short":"t", "description":"optional threshold parameter specifying minimum score to return (defaults to 0.8, lower values not recommended)"},
+				 {"flag": "all_legislators", "default":"false", "long":"all_legislators", "short":"a", "description":"When all_legislators is specified legislators with in_office=0 are included as well."}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}
+	], 
+	"path": "sunlightlabs",
+	"environment": [
+		{"parameter": "SUNLIGHT_API_KEY", "long":"apikey", "short":"k", "required":"true"}
+	]
+}
