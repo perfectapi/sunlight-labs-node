@@ -269,8 +269,157 @@
 			"returns": 
 				[{"name":"response", "description":"search response"}
 				]
+		},
+		{
+			"name": "searchPoliticalEntities",
+			"synopsis": "Search for entities--that is, politicians, individuals, or organizations--with the given name",
+			"description": "Search for entities--that is, politicians, individuals, or organizations--with the given name. Returns basic information about the the contributions to and from each entity, as well as an ID that can be used in other API methods to retrieve more information.",
+			"verb": "GET",
+			"parameter": {"name":"search", "required":"true", "description":"The query string. There are no logic operators or grouping."},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 
+		{
+			"name": "lookupPoliticalEntityById",
+			"synopsis": "Look up the entity ID based on an ID from a different data set",
+			"description": "Look up the entity ID based on an ID from a different data set. Currently we provide a mapping from the ID schemes used by Center for Reponsive Politics (CRP) (namespace=urn:crp:...) and the National Institute for Money in State Politics (NIMSP) - namespace=urn:nimsp:.... The result is a JSON object listing the TransparencyData IDs matching the given external ID.",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The ID of the entity in the given namespace."},
+			"options": 
+				[{"option": "namespace", "default":"urn:crp:organization", "description":"The dataset and data type of the ID."}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 
+		{
+			"name": "getEntityOverview",
+			"synopsis": "return general information about a particular entity given an ID.",
+			"description": "return general information about a particular entity.",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the entity in the transparemcy database"},
+			"options": 
+				[{"option": "cycle", "description":"Return contribution totals for the given cycle. When not given, returns totals for all cycles."}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 
+		{
+			"name": "getTopContributorsForPolitician",
+			"synopsis": "Return the top contributoring organizations, ranked by total dollars given",
+			"description": "Return the top contributoring organizations, ranked by total dollars given. An organization's giving is broken down into money given directly (by the organization's PAC) versus money given by individuals employed by or associated with the organization.",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the entity in the transparemcy database"},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 		
+		{
+			"name": "getTopSectorsForPolititian",
+			"synopsis": "return what each sector gave to the politician.",
+			"description": "return what each sector gave to the politician.",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the entity in the transparemcy database"},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 	
+		{
+			"name": "getTopIndustriesWithinSector",
+			"synopsis": "return the top contributing industries within a particular sector",
+			"description": "return the top contributing industries within a particular sector. industries are identified by the three character category code assigned by crp or nimsp. see http://assets.transparencydata.org.s3.amazonaws.com/docs/catcodes-20100402.csv",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the entity in the transparemcy database"},
+			"options": 
+				[{"option": "sector", "description":"Single character code for sector"}
+				],
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 	
+		{
+			"name": "getLocalBreakdown",
+			"synopsis": "return a breakdown of how much of the money raised was from contributors in the politician's state versus outside the politician's state",
+			"description": "return a breakdown of how much of the money raised was from contributors in the politician's state versus outside the politician's state",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the entity in the transparemcy database"},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 	
+		{
+			"name": "getContributorTypeBreakdown",
+			"synopsis": "return a breakdown of how much of the money raised was came from individuals versus organizations (pacs).",
+			"description": "return a breakdown of how much of the money raised was came from individuals versus organizations (pacs).",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the entity in the transparemcy database"},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 	
+		{
+			"name": "getIndividualsTopRecipientOrgs",
+			"synopsis": "return the top organizations to which this individual has given money.",
+			"description": "return the top organizations to which this individual has given money.",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the individual entity in the transparemcy database"},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 	
+		{
+			"name": "getIndividualsTopRecipientPoliticians",
+			"synopsis": "Return the top politicians to which this individual has given money.",
+			"description": "Return the top politicians to which this individual has given money.",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the individual entity in the transparemcy database"},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 
+		{
+			"name": "getIndividualsPartyBreakdown",
+			"synopsis": "return how much this individual gave to each party.",
+			"description": "return how much this individual gave to each party.",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the individual entity in the transparemcy database"},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 
+		{
+			"name": "getOrganizationsTopRecipients",
+			"synopsis": "return the top recipients of money from this organization.",
+			"description": "return the top recipients of money from this organization.  \"organization\" is an intentionally vague designation covering corportations, pacs, unions, trade groups, and other groups.",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the organization entity in the transparemcy database"},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 
+		{
+			"name": "getOrganizationsPartyBreakdown",
+			"synopsis": "return the portion of giving that went to each party.",
+			"description": "return the portion of giving that went to each party.  \"organization\" is an intentionally vague designation covering corportations, pacs, unions, trade groups, and other groups.",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the organization entity in the transparemcy database"},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
+		}, 
+		{
+			"name": "getOrganizationsStateFederalBreakdown",
+			"synopsis": "return the portion of giving that went to state versus federal candidates.",
+			"description": "return the portion of giving that went to state versus federal candidates.  \"organization\" is an intentionally vague designation covering corportations, pacs, unions, trade groups, and other groups.",
+			"verb": "GET",
+			"parameter": {"name":"id", "required":"true", "description":"The id of the organization entity in the transparemcy database"},
+			"returns": 
+				[{"name":"response", "description":"search response"}
+				]
 		}
-	], 
+		], 
 	"path": "sunlightlabs",
 	"environment": [
 		{"parameter": "SUNLIGHT_API_KEY", "long":"apikey", "short":"k", "required":"true"}
